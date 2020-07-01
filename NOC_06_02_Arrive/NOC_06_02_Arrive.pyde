@@ -9,25 +9,62 @@
 # See: http://www.red3d.com/cwr/
 
 from Vehicle import Vehicle
+from Food import Food
+import random 
+
+
 
 def setup():
     global v
     size(640, 360)
+    velocity = PVector(0, 0)
     v = Vehicle(width / 2, height / 2)
-
+    
+    initializeFood()
 
 def draw():
     background(51)
-
-    mouse = PVector(mouseX, mouseY)
-
+    
     # Draw an ellipse at the mouse position
-    fill(127)
-    stroke(200)
-    strokeWeight(2)
-    ellipse(mouse.x, mouse.y, 48, 48)
+    #fill(127)
+    #stroke(200)
+    #strokeWeight(2)
+    #ellipse(mouse.x, mouse.y, 48, 48)
+    
+    positionFood = PVector(food.position.x, food.position.y)
 
     # Call the appropriate steering behaviors for our agents
-    v.arrive(mouse)
+    food.display()
+    v.arrive(positionFood)
     v.update()
     v.display()
+    if food.update(v.position):
+        initializeFood()
+        v.numberFood += 1
+        println(v.numberFood)
+    numberFoodScreen(v.numberFood)
+        
+
+    #newPosition = food.update(v.position)
+    
+    #print("NewPosition.x = ", newPosition.x)
+    
+    #food.update()
+    
+def initializeFood():
+    
+    global food
+    
+    food_x = random.randint(0,620)
+    food_y = random.randint(0,340)
+    
+    food = Food(food_x, food_y)
+    
+def numberFoodScreen(numberFood):
+    
+    font = createFont("Georgia", 16)
+    textFont(font, 20)
+    text("Quant:", 5, 20)
+    text(numberFood, 75, 20)
+    
+    

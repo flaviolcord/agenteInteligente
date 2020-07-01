@@ -13,6 +13,7 @@ class Vehicle():
         self.r = 6
         self.maxspeed = 4
         self.maxforce = 0.2
+        self.numberFood = 0
 
     # Method to update location
     def update(self):
@@ -37,8 +38,8 @@ class Vehicle():
         d = desired.mag()
 
         # Scale with arbitrary damping within 100 pixels
-        if (d < 100):
-            m = map(d, 0, 100, 0, self.maxspeed)
+        if (d < 30):
+            m = map(d, 0, 30, 0, self.maxspeed)
             desired.setMag(m)
         else:
             desired.setMag(self.maxspeed)
