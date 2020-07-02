@@ -18,7 +18,7 @@ class Food():
         agentEat = False
 
         #analisa se o agente encontrou o alvo
-        if(abs(agentPosition.y - foodPosition.y) < 0.5 and abs(agentPosition.y - foodPosition.y) <  0.5):
+        if(abs(agentPosition.y - foodPosition.y) < 1 and abs(agentPosition.y - foodPosition.y) <  1):
             agentEat = True
             
         return agentEat
