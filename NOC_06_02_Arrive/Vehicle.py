@@ -2,8 +2,6 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-# The "Vehicle" class
-
 class Vehicle():
 
     def __init__(self, x, y):
@@ -11,8 +9,8 @@ class Vehicle():
         self.velocity = PVector(0, -2)
         self.position = PVector(x, y)
         self.r = 6
-        self.maxspeed = 4
-        self.maxforce = 0.2
+        self.maxspeed = 6
+        self.maxforce = 0.5
         self.numberFood = 0
 
     # Method to update location
@@ -51,16 +49,17 @@ class Vehicle():
         self.applyForce(steer)
 
     def display(self):
-        # Draw a triangle rotated in the direction of velocity
         theta = self.velocity.heading() + PI / 2
-        fill(127)
-        stroke(200)
-        strokeWeight(1)
-        with pushMatrix():
-            translate(self.position.x, self.position.y)
-            rotate(theta)
-            beginShape()
-            vertex(0, -self.r * 2)
-            vertex(-self.r, self.r * 2)
-            vertex(self.r, self.r * 2)
-            endShape(CLOSE)
+        photo = loadImage("1.png")    
+        image(photo, self.position.x, self.position.y, photo.width / 8, photo.height / 8)
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            

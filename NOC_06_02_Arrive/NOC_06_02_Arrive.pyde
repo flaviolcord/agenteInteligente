@@ -16,14 +16,14 @@ import random
 
 def setup():
     global v
-    size(640, 360)
+    size(700, 400)
     velocity = PVector(0, 0)
     v = Vehicle(width / 2, height / 2)
     
     initializeFood()
 
 def draw():
-    background(51)
+    background(255)
     
     # Draw an ellipse at the mouse position
     #fill(127)
@@ -43,6 +43,9 @@ def draw():
         v.numberFood += 1
         println(v.numberFood)
     numberFoodScreen(v.numberFood)
+    
+    #photo = loadImage("fruit.png")
+    #image(photo, 20, 20, photo.width / 10, photo.height / 10)
         
 
     #newPosition = food.update(v.position)
@@ -64,6 +67,7 @@ def numberFoodScreen(numberFood):
     
     font = createFont("Georgia", 16)
     textFont(font, 20)
+    fill(0, 0, 0)
     text("Quant:", 5, 20)
     text(numberFood, 75, 20)
     
