@@ -50,7 +50,7 @@ class Monkey():
     def display(self):
         #carrega imagem do macaco
         photo = loadImage("monkey.png")    
-        image(photo, self.position.x, self.position.y, photo.width / 8, photo.height / 8)
+        image(photo, self.position.x, self.position.y, photo.width / 7, photo.height / 7)
         
             
             

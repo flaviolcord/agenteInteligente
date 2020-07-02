@@ -14,8 +14,9 @@ import random
 
 
 def setup():
-    global monkey
-    size(700, 400)
+    global monkey, bg
+    size(700, 490)
+    bg = loadImage("Ambiente.jpg")
     
     #Defini valores iniciais para o agente(posição e velocidade)
     velocity = PVector(0, 0)
@@ -25,7 +26,7 @@ def setup():
     initializeFood()
 
 def draw():
-    background(255)
+    background(bg)
     
     #atualiza a posição do alvo e a sua imagem
     positionFood = PVector(food.position.x, food.position.y)
