@@ -10,7 +10,7 @@ class Food():
     def display(self):
         #carrega imagem da banana
         photo = loadImage("banana.png")
-        image(photo, self.position.x, self.position.y, photo.width / 4, photo.height / 4)
+        image(photo, self.position.x, self.position.y, photo.width / 3, photo.height / 3)
     
     def update(self, agentPosition):
         
