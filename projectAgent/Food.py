@@ -3,13 +3,13 @@
 import random 
 
 class Food():
-
+    
     def __init__(self, x, y):
         self.position = PVector(x, y)
-        self.r = 20
 
     def display(self):
-        photo = loadImage("2.png")
+        #carrega imagem da banana
+        photo = loadImage("banana.png")
         image(photo, self.position.x, self.position.y, photo.width / 4, photo.height / 4)
     
     def update(self, agentPosition):
@@ -17,7 +17,8 @@ class Food():
         foodPosition = self.position
         agentEat = False
 
-        if(abs(agentPosition.y - foodPosition.y) < 1 and abs(agentPosition.y - foodPosition.y) <  1):
+        #analisa se o agente encontrou o alvo
+        if(abs(agentPosition.y - foodPosition.y) < 0.5 and abs(agentPosition.y - foodPosition.y) <  0.5):
             agentEat = True
             
         return agentEat

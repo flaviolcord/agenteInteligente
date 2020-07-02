@@ -8,52 +8,44 @@
 # One vehicle "seeks"
 # See: http://www.red3d.com/cwr/
 
-from Vehicle import Vehicle
+from Monkey import Monkey
 from Food import Food
 import random 
 
 
-
 def setup():
-    global v
+    global monkey
     size(700, 400)
-    velocity = PVector(0, 0)
-    v = Vehicle(width / 2, height / 2)
     
+    #Defini valores iniciais para o agente(posição e velocidade)
+    velocity = PVector(0, 0)
+    monkey = Monkey(width / 2, height / 2)
+    
+    #Inicia a posição do primeiro alvo
     initializeFood()
 
 def draw():
     background(255)
     
-    # Draw an ellipse at the mouse position
-    #fill(127)
-    #stroke(200)
-    #strokeWeight(2)
-    #ellipse(mouse.x, mouse.y, 48, 48)
-    
+    #atualiza a posição do alvo e a sua imagem
     positionFood = PVector(food.position.x, food.position.y)
-
-    # Call the appropriate steering behaviors for our agents
     food.display()
-    v.arrive(positionFood)
-    v.update()
-    v.display()
-    if food.update(v.position):
+    
+    #envia para o agente a posição do alvo 
+    monkey.arrive(positionFood)
+    monkey.update()
+    monkey.display()
+    
+    #Analaisa se o agente encontrou o alvo
+    #caso tenha encontrado soma +1 
+    if food.update(monkey.position):
         initializeFood()
-        v.numberFood += 1
-        println(v.numberFood)
-    numberFoodScreen(v.numberFood)
-    
-    #photo = loadImage("fruit.png")
-    #image(photo, 20, 20, photo.width / 10, photo.height / 10)
+        monkey.numberFood += 1
         
-
-    #newPosition = food.update(v.position)
-    
-    #print("NewPosition.x = ", newPosition.x)
-    
-    #food.update()
-    
+    #Plota na tela q quantidade de alvos coletados
+    numberFoodScreen(monkey.numberFood)
+ 
+#Função para atualizar a posição do alvo
 def initializeFood():
     
     global food
@@ -63,6 +55,7 @@ def initializeFood():
     
     food = Food(food_x, food_y)
     
+#Função simples para plotar os valores na tela
 def numberFoodScreen(numberFood):
     
     font = createFont("Georgia", 16)

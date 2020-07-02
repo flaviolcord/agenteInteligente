@@ -2,15 +2,14 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-class Vehicle():
+class Monkey():
 
     def __init__(self, x, y):
         self.acceleration = PVector(0, 0)
         self.velocity = PVector(0, -2)
         self.position = PVector(x, y)
-        self.r = 6
-        self.maxspeed = 6
-        self.maxforce = 0.5
+        self.maxspeed = 8
+        self.maxforce = 0.8
         self.numberFood = 0
 
     # Method to update location
@@ -36,8 +35,8 @@ class Vehicle():
         d = desired.mag()
 
         # Scale with arbitrary damping within 100 pixels
-        if (d < 30):
-            m = map(d, 0, 30, 0, self.maxspeed)
+        if (d < 40):
+            m = map(d, 0, 40, 0, self.maxspeed)
             desired.setMag(m)
         else:
             desired.setMag(self.maxspeed)
@@ -49,8 +48,8 @@ class Vehicle():
         self.applyForce(steer)
 
     def display(self):
-        theta = self.velocity.heading() + PI / 2
-        photo = loadImage("1.png")    
+        #carrega imagem do macaco
+        photo = loadImage("monkey.png")    
         image(photo, self.position.x, self.position.y, photo.width / 8, photo.height / 8)
         
             
